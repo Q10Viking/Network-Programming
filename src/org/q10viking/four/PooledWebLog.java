@@ -32,7 +32,7 @@ public class PooledWebLog {
 				results.add(result);
 			}
 			
-		} 
+		}  
 		 
 		//打印结果，每次结果未准备就绪时就会阻塞
 		for(LogEntry result: results) {
