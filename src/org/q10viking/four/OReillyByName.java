@@ -7,10 +7,10 @@ public class OReillyByName {
  
 	public static void main(String[] args) {
 		try {
-			InetAddress address = InetAddress.getByName("47.91.169.15");
+			InetAddress address = InetAddress.getByName("www.google.com");
 		//	InetAddress address = InetAddress.getLocalHost();
 			int result = getVersion(address);	
-			System.out.println("Ipv"+result+": "+address.getCanonicalHostName());
+			System.out.println("Ipv"+result+": "+address);
 		} catch (UnknownHostException e) {
 			System.out.println("Could not find this computer's address.");
 		}
