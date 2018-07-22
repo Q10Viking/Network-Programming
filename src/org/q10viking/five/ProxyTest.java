@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ProxyTest
 { 
-	//HTTPS代理服务器，来自福建，联通
+	//HTTPS代理服务器，来自福建，联通 
 	final String PROXY_ADDR = "220.249.185.178";
 	final int PROXY_PORT = 9797;
 	// 定义需要访问的网站地址
@@ -23,7 +23,7 @@ public class ProxyTest
 		URLConnection conn = url.openConnection(proxy);
 		
 		// 设置超时时长。
-		conn.setConnectTimeout(3000);
+	//	conn.setConnectTimeout(3000);
 		try( 
 			// 通过代理服务器读取数据的Scanner
 			Scanner scan = new Scanner(conn.getInputStream());
