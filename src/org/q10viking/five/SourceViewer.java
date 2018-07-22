@@ -12,7 +12,8 @@ public class SourceViewer {
 
 	public static void main(String[] args) {
 		InputStream in=null;
-		String website = "https://www.baidu.com/";
+		String website = "https://www.baidu.com/"; 
+		
 		try {
 			URL u = new URL(website);
 			in = u.openStream();
@@ -29,7 +30,7 @@ public class SourceViewer {
 			System.err.println(website+" is not a parseable URL");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
+		}finally { 
 			if(in != null) {
 				try {
 					in.close();
