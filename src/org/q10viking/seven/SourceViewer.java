@@ -19,6 +19,7 @@ public class SourceViewer {
 			int code = uc.getResponseCode();
 			String response = uc.getResponseMessage();
 			//请求行
+			
 			System.out.println("HTTP/1.x "+code+" "+response);
 			//请求体
 			for(int i=1;;i++) {
