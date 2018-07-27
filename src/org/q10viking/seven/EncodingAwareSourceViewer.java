@@ -1,6 +1,10 @@
 package org.q10viking.seven;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -25,6 +29,14 @@ public class EncodingAwareSourceViewer {
 				encoding = contentType.substring(encodingStart+8);
 			}
 			System.out.println(encoding);
+			InputStream in = new BufferedInputStream(uc.getInputStream());
+			Reader r = new InputStreamReader(in,encoding);
+			int c;
+			while((c = r.read()) != -1) {
+				System.out.print((char)c);
+			}
+			
+			
 		}catch (MalformedURLException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
