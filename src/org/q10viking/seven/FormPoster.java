@@ -66,7 +66,5 @@ public class FormPoster {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
-
 }
