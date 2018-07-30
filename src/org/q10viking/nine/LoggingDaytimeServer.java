@@ -74,3 +74,14 @@ public class LoggingDaytimeServer {
 	}
 
 }
+
+/*
+Server start...
+Get a connection...
+七月 29, 2018 11:09:24 下午 org.q10viking.nine.LoggingDaytimeServer$DaytimeTask call
+信息: Sun Jul 29 23:09:24 CST 2018 /0:0:0:0:0:0:0:1:20978
+Get a connection...
+七月 29, 2018 11:10:24 下午 org.q10viking.nine.LoggingDaytimeServer$DaytimeTask call
+信息: Sun Jul 29 23:10:24 CST 2018 /0:0:0:0:0:0:0:1:21062
+
+*/
