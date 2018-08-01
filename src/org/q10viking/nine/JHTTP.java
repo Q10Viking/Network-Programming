@@ -54,7 +54,7 @@ public class JHTTP {
 			System.out.println("Usage: java JHTTP docroot port");
 			return;
 		}
-		int port = 8080;
+		int port = GetPort.getPort();
 		
 		try {
 			JHTTP webServer = new JHTTP(docroot,port);

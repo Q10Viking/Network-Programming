@@ -29,6 +29,7 @@ public class RequestProcessor implements Runnable {
 		}
 		try {
 			rootDirectory = rootDirectory.getCanonicalFile();
+			//System.out.print("=================: "+rootDirectory);
 		}catch(IOException ex) {
 		}
 		this.rootDirectory = rootDirectory;
@@ -41,6 +42,7 @@ public class RequestProcessor implements Runnable {
 	public void run() {
 		//安全检查
 		String root = rootDirectory.getPath();
+	//	System.out.println("******************: "+root);
 		try {
 			OutputStream raw = new BufferedOutputStream(connection.getOutputStream());
 			Writer out = new OutputStreamWriter(raw);
@@ -51,12 +53,24 @@ public class RequestProcessor implements Runnable {
 									),"US-ASCII"
 							);
 			StringBuilder requestLine = new StringBuilder();
+			boolean flag = true;
+			int i=0;
 			while(true) {
 				int c = in.read();
-				if(c == '\r' || c == '\n') break;
-				requestLine.append((char)c);
+				if(c == '\r' || c == '\n') {
+					flag=false;
+					i++;
+				}else {
+					i = 0;
+				}
+				if(flag)
+					requestLine.append((char)c);
+				if(i>=3) break;
+				System.out.print((char)c);
+				
 			}
 			
+			System.out.println("*************"+requestLine.toString()+"****************");
 			String get = requestLine.toString();
 			logger.info(connection.getRemoteSocketAddress()+" "+get);
 			String[] tokens = get.split("\\s+");
@@ -65,11 +79,16 @@ public class RequestProcessor implements Runnable {
 			if(method.equals("GET")) {
 				String fileName = tokens[1];
 				if(fileName.endsWith("/")) fileName += indexFileName;
+				System.out.println("关注： "+fileName);
+				
+				System.out.println("测试字串: "+fileName.substring(1,fileName.length()));
 				String contentType = URLConnection.getFileNameMap().getContentTypeFor(fileName);
+				System.out.println("contentType: "+contentType);
 				if(tokens.length>2) {
 					version = tokens[2];
 				}
 				File theFile = new File(rootDirectory,fileName.substring(1,fileName.length()));
+				System.out.println("新file: "+theFile);
 				if(theFile.canRead() && theFile.getCanonicalPath().startsWith(root)) {
 					byte[] theData = Files.readAllBytes(theFile.toPath());
 					if(version.startsWith("HTTP/")) {	//发送一个MIME首部

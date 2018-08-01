@@ -195,18 +195,22 @@ public class WhoisGUI extends JFrame {
     }
   }
 
+  
+  /*
   public static void main(String[] args) throws IOException {
     try {
       Whois server = new Whois();
       WhoisGUI a = new WhoisGUI(server);
       a.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       a.pack();
-      EventQueue.invokeLater(new FrameShower(a));
+      a.setVisible(true);
+   //   EventQueue.invokeLater(new FrameShower(a));
     } catch (UnknownHostException ex) {
       JOptionPane.showMessageDialog(null, "Could not locate default host "
           + Whois.DEFAULT_HOST, "Error", JOptionPane.ERROR_MESSAGE);    
     }
   }
+  */
 
   private static class FrameShower implements Runnable {
   
